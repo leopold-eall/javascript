@@ -1,0 +1,125 @@
+<html>
+<title>转尾连环</title>
+
+<head>
+  <script type="text/javascript">
+    
+    var c = 0
+    var t
+    function timedCount() {
+      document.getElementById('txt').value = c
+      c = c + 1
+      t = setTimeout("timedCount()", 1000)
+    }
+
+    function stopCount() {
+      c = 0;
+      setTimeout("document.getElementById('txt').value=0", 0);
+      clearTimeout(t);
+    }
+
+
+    var w = 100
+    var c
+    var d
+    var s
+
+    function Long() {
+      document.getElementById("bg").style.width = w + "px";
+      w = w + 100
+      c = setTimeout("Long()", 1000);
+      clearTimeout(d);
+    }
+
+    function Short() {
+      w = w - 100
+      document.getElementById("bg").style.width = w + "px";
+      d = setTimeout("Short()", 1000);
+      clearTimeout(c);
+    }
+
+    function Stop() {//短短短无法暂停
+      clearTimeout(c, d);
+    }
+  </script>
+  
+  <script>
+    var dir="left";
+    function huigun() {
+      if (dir =="left") {
+        var title = document.title;
+        var first = title.charAt(0);
+        var last = title.substring(1 , title.length);
+        document.title = last + first;
+      }
+      else if (dir =="right") { //不执行
+        var title = docunet.title;
+        var first = title.substring(0 , title.length -1);
+        var last = title.charAt(title.length -1);
+        document.title = last + first;
+      }
+      else { //无限弹窗
+        alert("方向错了!");
+      }
+    }
+    function setdir(d) {
+      dir = d;
+    }
+    setInterval("huigun()",1000);
+    
+    function huiws() {
+        var text = document.getElementById("huiws").innerHTML;
+        var first = text.substring(0 , 3);
+        var last = text.substring(3 , text.length);
+        document.getElementById("huiws").innerHTML = last + first;
+    }
+//    setInterval("huiws()",3000);
+  </script>
+  <style>
+    div {
+      margin-bottom: 10px;
+    }
+    #bg {
+      width: 100px;
+      height: 22px;
+      background: #ccc;
+      transition: .2s;
+      border-radius: 7px;
+    }
+    
+    #huiws {
+      width: 7em;
+      height: 1.2em;
+      line-height: 1.2em;
+      overflow: hidden;
+      text-wrap: normal;
+    }
+    
+    
+    
+  </style>
+</head>
+
+<body>
+
+  <form>
+    <input type="button" value="开始计时！" onClick="timedCount()">
+    <input type="text" id="txt">
+    <input type="button" value="停止计时！" onClick="stopCount()">
+  </form>
+  <form>
+    <div id="bg"></div>
+    <input type="button" value="长长长！" onClick="Long()">
+    <input type="button" value="短短短！" onClick="Short()">
+    <input type="button" value="停停停！" onClick="Stop()">
+  </form>
+  <p>请点击上面的“开始计时”按钮来启动计时器。输入框会一直进行计时，从 0 开始。点击“停止计时”按钮可以终止计时，并将计数重置为 0。</p>
+
+  <div id="huiws">春晴喜鹊噪前津柳媚新花恋蝶去来频</div>
+  <div>春晴喜鹊噪前津柳媚新花恋蝶去来频</div>
+  <input type="button" value="滚动" onClick="huiws()">
+  <input type="button" value="右滚动" onClick="setdir()">
+
+</body>
+
+</html>

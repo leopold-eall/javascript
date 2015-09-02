@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>跟随鼠标移动div</title>
+	<style>
+		#fly {
+      position: absolute;
+			width: 200px;
+			height: 200px;
+			line-height: 200px;
+			background: red;
+			color: #fFF;
+			text-align: center;		
+		}
+		
+		
+		#star a {
+			
+			width: 60px;
+			height: 60px;
+			font-size: 60px;
+			color: #ccc;
+			text-decoration: none;
+		}
+	</style>
+</head>
+<body>
+
+	
+	<!--<div id="star">
+		<a href="javascript:;">★</a>
+		<a href="javascript:;">★</a>
+		<a href="javascript:;">★</a>
+		<a href="javascript:;">★</a>
+		<a href="javascript:;">★</a>
+	</div>-->
+	
+	<script>
+	
+		
+			
+			function star(){
+				
+				var oStar = document.getElementById("star");
+				var smallStars = oStar.getElementsByTagName("a");
+				var starsNum = smallStars.length;
+				var 
+				
+				for ( var i; i < starsNum; i++ ){
+					smallStars[i].onclick = function(){
+						
+						
+					}				}
+			}
+			
+			
+		}
+	</script>
+</body>
+</html>
