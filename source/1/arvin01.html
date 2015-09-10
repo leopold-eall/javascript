@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	
+	<title> Change pin</title>
+    <style type="text/css">
+    body, ul {
+        margin: 0;
+        padding: 0;
+    }
+
+    li {
+        list-style:none;
+    }
+
+    body {
+        color: #fff;
+    }
+
+    .clear:after {
+        display: table;
+        content: "";
+        clear: both;
+    }
+    .clear { zoom: 1; }
+
+    input {
+        display: inline-block;
+        margin: 20px 0;
+        width: 100px;
+        height: 30px;
+        border: none;
+        background: none;
+        color: #fff;
+    }
+
+    .changePin {
+        text-align: center;
+    }
+    .red {
+        background: red;
+    }
+    .blue {
+        background: blue;
+    }
+    .black {
+        background: black;
+    }
+
+    #nav {
+        margin: 0 auto;
+        width: 80%;
+        height: 200px;
+        border: 2px solid blue;
+    }
+
+    #nav .nav-menu {
+        margin: 0 auto;
+        width: 624px;
+        background: #fff;
+        border: 2px solid #fff;
+    }
+
+    #nav .nav-menu li {
+        float: left;
+        margin: 0 2px;
+        width: 100px;
+        height: 100%;
+        line-height: 50px;
+        text-align: center;
+    }
+
+    .red-bg {
+        background: #ffdddd;
+    }
+
+    .red-bg .nav-menu li{
+        background: red;
+    }
+
+    .blue-bg {
+        background: #a3c5a8;
+    }
+
+    .blue-bg .nav-menu li{
+        background: blue;
+    }
+
+    .black-bg {
+        background: #a3c5a8;
+    }
+
+    .black-bg .nav-menu li{
+        background: black;
+    }
+
+    </style>
+</head>
+<body>
+    <div id="nav" class="red-bg">
+    	<div class="changePin">
+            <input class="red" type="button" value="red">
+            <input class="blue" type="button" value="blue">
+            <input class="black" type="button" value="black">
+    	</div>
+
+    	<div class="nav-menu">
+            <ul class="clear">
+                <li>新闻</li>
+                <li>娱乐</li>
+                <li>体育</li>
+                <li>电影</li>
+                <li>音乐</li>
+                <li>旅游</li>
+            </ul>   
+        </div>
+    </div>
+
+    <script type="text/javascript">
+    window.onload=function (){
+
+        var oNav = document.getElementById("nav");
+        var pinsColor = document.getElementsByTagName("input");
+        var pinsLen = pinsColor.length;
+
+        for (var i = 0; i < pinsLen; i++) {
+
+            pinsColor[i].onclick = function(){
+
+                oNav.className = this.className + "-bg" ;
+             }
+         }; 
+
+    }
+    </script>
+</body>
+</html>
