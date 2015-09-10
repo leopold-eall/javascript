@@ -40,30 +40,23 @@
       var divs = document.getElementById("divs");
       
       btns[0].onclick = function(){
-        this.disabled = true;
-        divs.style.width = "400px";
+        divs.style.width = 400+"px";
       }
       
       btns[1].onclick = function(){
-        this.disabled = true;
         divs.style.height = "400px";
       }
       
       btns[2].onclick = function(){
-        this.disabled = true;
         divs.style.background = "#00a0e9";
       }
       
       btns[3].onclick = function(){
-        this.disabled = true;
         divs.style.display = "none";
       }
       
       btns[4].onclick = function(){
-        divs.style.height = "200px";
-        divs.style.width = "200px";
-        divs.style.background = "#0a9";
-        divs.style.display = "block";
+        divs.style.cssText = " ";
       }
       
     </script>
@@ -88,22 +81,23 @@
       var Psum = document.getElementById("sum");
       
       text.onkeyup = function(){
-        text.value = text.value.replace(/[^(\d)|(,)]/,"");
+        text.value = text.value.replace(/[^(\d)|(|)]/ig,"");
       }
+      
 
       btn.onclick = function () {
-       
         var sum = 0;
-        var oInput = text.value.split(",");
+        var oInput = text.value.split("|");
         for( var i in oInput){
-          if (isNaN(oInput[i]))
-            this.value = "0";
-            
+          if ( isNaN(oInput[i]) ){
+            this.innerHTML = "0";
+          }
           sum += parseInt(oInput[i]);
         }
         Psum.innerHTML = sum;
+        alert( oInput);
       }
-        
+      
     }
   </script>
 </body>
