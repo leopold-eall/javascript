@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+    #outer { width: 330px; height: 100px; margin: 10px auto;}
+    #outer div { float: left; width: 100px; height: 100px; margin: 0 5px; background:black;}
+    
+    ul { list-style: none; padding: 0;}
+    #pop { width: 560px; border:1px solid #333; margin: 10px auto; padding: 0 0 10px 10px; text-align: center;}
+    #pop h2 { line-height: 30px; text-align: center; margin-top: 10px;}
+    #pop ul:after {content:" "; display: block; height: 0; clear:both; visibility: hidden;}
+    #pop ul li { position: relative; float: left; border:1px solid #333; margin:10px 10px 0 0; display: inline;}
+    #pop ul li span {position: absolute; top: -20px; left: -20px; display: none; cursor:pointer; background:#666; width: 120px; height: 120px; padding: 10px;}
+    #pop ul a { color: #666; width: 80px; height: 80px; display: block; background:#f0f0f0; text-decoration: none; padding: 10px;}
+    #pop ul a strong { display: block;}
+    .zindex { z-index: 1;}
+  </style>
+  <script>
+    window.onload = function () {
+      var oDiv = document.getElementById("outer").getElementsByTagName("div");
+      var oBtn = document.getElementsByTagName("button")[0];
+      oBtn.onclick = function () {
+        for(var i = 0; i < oDiv.length; i++) {
+          oDiv[i].style.background = "red";
+        }
+      };
+      var oLi = document.getElementsByTagName("li");
+      var oA = document.getElementsByTagName("a");
+      var oSpan = document.getElementsByTagName("span");
+      for (var i =0; i < oLi.length; i++) {
+        oA[i].index = oSpan[i].index = i;
+        oA[i].onmouseover = function() {
+          oLi[this.index].className = "zindex";
+          oSpan[this.index].style.display = "block"
+        };
+        oA[i].onmouseout = function() {
+          oLi[this.index].className = "";
+          oSpan[this.index].style.display = "none";
+        };
+        oSpan[i].onmouseover = function() {
+          oLi[this.index].className = "zindex";
+          this.style.display = "block"
+        };
+        oSpan[i].onmouseout = function() {
+          oLi[this.index].className = "";
+          this.style.display = "none";
+        };
+      }
+    }
+  </script>
+  <script type="text/javascript">
+    varValue = 0;
+    for (vara = 1; a <= 100; a++) {
+      Value = Value + a;
+      Value += "<br>";
+    }
+    document.write(Value);
+  </script>
+</head>
+<body>
+  
+  <center><button>点击DIV变成红色</button></center>
+  <div id="outer">
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+  
+  <div id="pop">
+    <h2>弹出来吧</h2>
+    <ul>
+      <li>
+        <a href="#"><strong>BMW</strong>宝马</a>
+        <span></span>
+      </li>
+      <li>
+        <a href="#"><strong>BMW</strong>宝马</a>
+        <span></span>
+      </li>
+      <li>
+        <a href="#"><strong>BMW</strong>宝马</a>
+        <span></span>
+      </li>
+      <li>
+        <a href="#"><strong>BMW</strong>宝马</a>
+        <span></span>
+      </li>
+      <li>
+        <a href="#"><strong>BMW</strong>宝马</a>
+        <span></span>
+      </li>
+      <li>
+        <a href="#"><strong>BMW</strong>宝马</a>
+        <span></span>
+      </li>
+      <li>
+        <a href="#"><strong>BMW</strong>宝马</a>
+        <span></span>
+      </li>
+      <li>
+        <a href="#"><strong>BMW</strong>宝马</a>
+        <span></span>
+      </li>
+      <li>
+        <a href="#"><strong>BMW</strong>宝马</a>
+        <span></span>
+      </li>
+      <li>
+        <a href="#"><strong>BMW</strong>宝马</a>
+        <span></span>
+      </li>
+    </ul>
+  </div>
+  
+</body>
+</html>
