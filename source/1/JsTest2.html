@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Js Test</title>
+
+  <style>
+    body {
+      padding: 100px;
+    }
+    
+    #divs {
+      width: 200px;
+      height: 200px;
+      background: #0a9;
+      margin-top: 50px;
+    }
+  </style>
+
+
+
+</head>
+
+<body>
+
+  <!-- 第一部分 -->
+
+  
+    <button>变宽</button>
+    <button>变高</button>
+    <button>变色</button>
+    <button>隐藏</button>
+    <button>重置</button>
+    
+    <div id="divs"></div>
+    
+    <script type="text/javascript">
+      var btns = document.getElementsByTagName("button");
+      var divs = document.getElementById("divs");
+      
+      btns[0].onclick = function(){
+        divs.style.width = 400+"px";
+      }
+      
+      btns[1].onclick = function(){
+        divs.style.height = "400px";
+      }
+      
+      btns[2].onclick = function(){
+        divs.style.background = "#00a0e9";
+      }
+      
+      btns[3].onclick = function(){
+        divs.style.display = "none";
+      }
+      
+      btns[4].onclick = function(){
+        divs.style.cssText = " ";
+      }
+      
+    </script>
+
+  <!-- 第一部分 End-->
+  <br>
+  <br>
+  <hr>
+  <br>
+  <br>
+  
+  <!-- 第2部分 -->
+  <input type="text">
+  <p>输入数字求和，数字之间用英文“ ”隔开</p>
+  <button class="btn">求和</button>
+  <h2 id="sum"></h2>
+
+  <script>
+    window.onload = function () {
+      var text = document.getElementsByTagName("input")[0];
+      var btn = document.getElementsByClassName("btn")[0];
+      var Psum = document.getElementById("sum");
+      
+      text.onkeyup = function(){
+        text.value = text.value.replace(/[^(\d)|(|)]/ig,"");
+      }
+      
+
+      btn.onclick = function () {
+        var sum = 0;
+        var oInput = text.value.split("|");
+        for( var i in oInput){
+          if ( isNaN(oInput[i]) ){
+            this.innerHTML = "0";
+          }
+          sum += parseInt(oInput[i]);
+        }
+        Psum.innerHTML = sum;
+        alert( oInput);
+      }
+      
+    }
+  </script>
+</body>
+
+</html>
