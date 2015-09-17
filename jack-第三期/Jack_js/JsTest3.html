@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Js Test</title>
+
+  <style>
+    body { background: #ccc;}
+    ul { list-style: none; width: 250px; margin: 100px auto;}
+    ul li { display: inline-block; float: left; margin: 1px 2px; border-radius: 3px;}
+    li img { width: 100%;}
+    .bigOne { margin-right: 5px;}
+    .bigOne div { display: none;background: url(images/loading.gif) center center no-repeat;}
+    #div { width: 100px; height: 100px; background: #f00;position: absolute;top: 100px;left: 100px;}
+  </style>
+
+  <script type="text/javascript">
+    window.onload = function() {
+      var imgs = document.getElementsByTagName("img");
+      var divs = document.getElementById("bigBox");
+      
+      for(var i = 0; i<imgs.length; i++ ){
+        imgs[i].onmouseover = function() {
+          var img = new Image();
+          img.src = imgs[0].src = this.src.replace(/small/,"big");
+          divs.style.display = "block";
+          img.complete ? divs.style.display = "none" : (imgs[0].onload = function(){ divs.style.display = "none"})
+        }
+      }
+      
+      
+      //第二部分  js代码
+    var oBox = document.getElementById("div");
+	var bLeft = bTop = bRight = bBottom = bCtrlKey = false;
+	
+	setInterval(function ()
+	{
+		if (bLeft)
+		{
+			oBox.style.left = oBox.offsetLeft - 10 + "px"
+		}
+		else if (bRight)
+		{
+			oBox.style.left = oBox.offsetLeft + 10 + "px"
+		}
+		
+		if (bTop)
+		{
+			oBox.style.top = oBox.offsetTop - 10 + "px"	
+		}
+		else if(bBottom)
+		{
+			oBox.style.top = oBox.offsetTop + 10 + "px"
+		}
+		//防止溢出
+		limit();
+	},30);	
+	
+	document.onkeydown = function (event)
+	{
+		var event = event || window.event;
+		bCtrlKey = event.ctrlKey;
+		
+		switch (event.keyCode)
+		{
+			case 37:
+				bLeft = true;
+				break;
+			case 38:
+				if(bCtrlKey)
+				{
+					var oldWidth = oBox.offsetWidth;
+					var oldHeight = oBox.offsetHeight;
+					
+					oBox.style.width = oBox.offsetWidth * 1.5 + "px";
+					oBox.style.height = oBox.offsetHeight * 1.5 + "px";				
+					
+					oBox.style.left = oBox.offsetLeft - (oBox.offsetWidth - oldWidth) / 2 + "px";
+					oBox.style.top = oBox.offsetTop - (oBox.offsetHeight - oldHeight) / 2 + "px";
+					
+					break;	
+				}
+				bTop = true;
+				break;
+			case 39:
+				bRight = true;
+				break;
+			case 40:
+				if(bCtrlKey)
+				{
+					var oldWidth = oBox.offsetWidth;
+					var oldHeight = oBox.offsetHeight;
+					
+					oBox.style.width = oBox.offsetWidth * 0.75 + "px";
+					oBox.style.height = oBox.offsetHeight * 0.75 + "px";				
+					
+					oBox.style.left = oBox.offsetLeft - (oBox.offsetWidth - oldWidth) / 2 + "px";
+					oBox.style.top = oBox.offsetTop - (oBox.offsetHeight - oldHeight) / 2 + "px";
+					
+					break;	
+				}
+				bBottom = true;
+				break;
+			case 49:
+				bCtrlKey && (oBox.style.background = "green");
+				break;
+			case 50:
+				bCtrlKey && (oBox.style.background = "yellow");
+				break;
+			case 51:
+				bCtrlKey && (oBox.style.background = "blue");
+				break;
+		}
+		
+		return false
+	};
+
+	document.onkeyup = function (event)
+	{
+		switch ((event || window.event).keyCode)
+		{
+			case 37:
+				bLeft = false;
+				break;
+			case 38:
+				bTop = false;
+				break;
+			case 39:
+				bRight = false;
+				break;
+			case 40:
+				bBottom = false;
+				break;
+		}
+	};
+
+	//防止溢出
+	function limit()
+	{
+		var doc = [document.documentElement.clientWidth, document.documentElement.clientHeight]
+		//防止左侧溢出
+		oBox.offsetLeft <=0 && (oBox.style.left = 0);
+		//防止顶部溢出
+		oBox.offsetTop <=0 && (oBox.style.top = 0);
+		//防止右侧溢出
+		doc[0] - oBox.offsetLeft - oBox.offsetWidth <= 0 && (oBox.style.left = doc[0] - oBox.offsetWidth + "px");
+		//防止底部溢出
+		doc[1] - oBox.offsetTop - oBox.offsetHeight <= 0 && (oBox.style.top = doc[1] - oBox.offsetHeight + "px")
+	}
+    }
+       
+      
+  </script>
+
+
+</head>
+
+<body>
+  
+  <!-- 第一部分 -->
+  <ul>
+    <li class="bigOne">
+      <img src="images/big_1.jpg" alt="">
+      <div id="bigBox"></div>
+    </li>
+    <li><img src="images/small_1.jpg" alt=""></li>
+    <li><img src="images/small_2.jpg" alt=""></li>
+    <li><img src="images/small_3.jpg" alt=""></li>
+    <li><img src="images/small_4.jpg" alt=""></li>
+    <li><img src="images/small_5.jpg" alt=""></li>
+    <li><img src="images/small_6.jpg" alt=""></li>
+    <li><img src="images/small_7.jpg" alt=""></li>
+    <li><img src="images/small_8.jpg" alt=""></li>
+    <li><img src="images/small_9.jpg" alt=""></li>
+    <li><img src="images/small_10.jpg" alt=""></li>
+    <li><img src="images/small_11.jpg" alt=""></li>
+  </ul>
+  
+  <!-- 第二部分 -->
+  <div id="div"></div>
+  
+  
+</body>
+
+</html>

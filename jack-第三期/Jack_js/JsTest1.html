@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="zh-CN" xml:lang="zh-CN">
+
+<head>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+  <meta charset="UTF-8" />
+  <title>新闻列表</title>
+  
+  <style>
+    ul { list-style: decimal;}
+  </style>
+</head>
+
+<body style="background:#ccc;">
+  <!-- 倒计时 -->
+  <textarea name="" id="" cols="30" rows="10"></textarea>
+  
+  <input type="button" id="btn" value="注册" >
+  
+  
+  <!-- 鼠标移动 背景变色 -->
+  <ul>
+    <li>中国</li>
+    <li>美国</li>
+    <li>日本</li>
+    <li>韩国</li>
+    <li>朝鲜</li>
+    <li>印度</li>
+    <li>英国</li>
+  </ul>
+  
+  <ul>
+    <li>北京</li>
+    <li>纽约</li>
+    <li>东京</li>
+    <li>首尔</li>
+    <li>平壤</li>
+    <li>新德里</li>
+    <li>伦敦</li>
+  </ul>
+
+
+
+  <script type="text/javascript">
+    // 倒计时按钮
+    var num = 10;
+    function count(){
+      var btn = document.getElementById('btn');
+      
+      if(num>0){
+        btn.disabled = true;
+        btn.value = "注册"+num+"秒。"
+        num--;
+      }
+      else{
+        btn.value = "注册";
+        btn.disabled = false;
+      }
+      
+    }
+    var t = setInterval("count()", 1000);
+    
+    // 背景色改变
+    function ChangeColor() {
+      var lis = document.getElementsByTagName("li");
+      for (var i = 0; i<lis.length; i++){
+        lis[i].onmouseover = function() {
+          this.style.background = "#abc";
+        }
+        lis[i].onmouseout = function() {
+          this.style.background = "#ccc";
+        }
+      }
+    }
+    var color = ChangeColor();
+    
+  </script>
+
+</body>
+
+</html>
