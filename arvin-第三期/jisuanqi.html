@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	
+	<title></title>
+<style type="text/css">
+
+.clear:after {
+	display: table;
+	content: "";
+	clear: both;
+}
+
+	#math {
+		margin: 0 auto;
+		width: 202px;
+		border: 1px solid #f00;
+	}
+	#math .result {
+		display: block;
+		width: 198px;
+		height:40px;
+		font-size: 24px;
+		font-weight: bold;
+		text-align: right;
+		background: none;
+	}
+
+	#math .number {
+		padding: 5px 0;
+		width: 200px;
+		border: 1px solid #333;
+	}	
+
+	#math .number ul {
+		margin: 0;
+		padding: 0;
+	}
+
+	#math .number li{
+		float: left;
+		margin: 5px 5px;
+		width: 40px;
+		height: 20px;
+		background: #333;
+		color: #fff;
+		list-style: none;
+		text-align: center;
+	}	
+}
+</style>
+</head>
+<body>
+    <div id="math">
+    	<input class="result" type="text" value="0">
+    	<div class="number">
+    		<ul class="clear">
+    			<li>C</li>
+    			<li>%</li>
+    			<li>÷</li>
+    			<li>×</li>
+    			<li>7</li>
+    			<li>8</li>
+    			<li>9</li>
+    			<li>+</li>
+    			<li>4</li>
+    			<li>5</li>
+    			<li>6</li>
+    			<li>-</li>
+    			<li>1</li>
+    			<li>2</li>
+    			<li>3</li>
+    			<li>=</li>
+    			<li>0</li>
+    			<li>.</li>
+    		</ul>
+    	</div>
+    </div>
+
+<script type="text/javascript">
+
+var oMath = document.getElementById("math");
+var oResult = oMath.getElementsByClassName("result")[0];
+var oNum = oMath.getElementsByClassName("number")[0];
+var aLi = oNum.getElementsByTagName("li");
+var numLen = aLi.length;
+
+for( var i = 0; i < numLen; i++ ){
+
+	aLi[i].onclick = function(){
+		if( oResult.value == 0 ){
+
+			oResult.value = "";
+			oResult.value += this.innerHTML;
+		}else{
+			oResult.value += this.innerHTML;
+		}
+		
+	}
+}
+
+function getNum(  ){
+
+
+
+}
+
+</script>
+</body>
+</html>
